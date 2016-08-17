@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Esign21</title>
+    <!--Handlebars-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <!--jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!--Ekko Lightbox-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.js"></script>
+  </head>
+  <body>
+
+    <div class="header">
+      <div class="innerheader">
+        <div class="about" onclick="displayAbout()">About</div>
+        <div class="project" onclick="displayProject()">Project</div>
+        <div class="contact" onclick="displayContact()">Contact</div>
+    </div>
+    </div>
+    <div class="main">
+        <div class="content"></div>
+    </div>
+        <div class="footer"></div>
+
+
+  </body>
+</html>
+
+<script id="t-about" type="text/x-handlebars-template">
+  <img src="es21.jpg" style="width: 400px; height: auto; background-size: contain; margin: auto; float: right;">
+  <h1 style="color: white; text-shadow: 2px 2px 3px rgba(80, 80, 80, .3);">{{subject}}</h1>
+  {{#each areas}}
+  <p>
+    <br><h3 style="color: white; margin: -10px 0; text-shadow: 2px 2px 3px rgba(80, 80, 80, .3);">{{title}}</h3>
+    <h4 style="color: white; margin: -13px 0; text-shadow: 2px 2px 3px rgba(80, 80, 80, .3);">
+      {{#each skills}}
+      <br>{{this}}
+      {{/each}}
+    </h4>
+  </p>
+  {{/each}}
+
+</script>
+
+<script id="t-project" type="text/x-handlebars-template">
+  <h1 style="color: white; text-shadow: 2px 2px 3px rgba(80, 80, 80, .3);">{{subject}}</h1>
+  <div style="height: 400px; overflow-y: scroll">
+    {{#each images}}
+    <div class="project-img" data-toggle="lightbox" data-remote="selected pic/{{this}}"
+      onclick="toggleLightbox(this)" style="background-image: url('selected pic/{{this}}')"></div>
+    {{/each}}
+  </div>
+</script>
+
+<script id="t-default" type="text/x-handlebars-template">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" style=" width: 900px; height:350px; margin: auto;">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      {{#each slides}}
+      <li data-target="#myCarousel" data-slide-to="{{@index}}" class="{{active}}"></li>
+      {{/each}}
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox" >
+      {{#each slides}}
+      <div class="item {{active}}">
+        <img src="selected pic/{{image}}" alt="{{name}}" style="width: auto; height: 350px; background-size: contain; margin: auto;">
+        <h4 style="color: white; text-shadow: 2px 2px 3px rgba(80, 80, 80, .3); text-align: center;">{{caption}}</h4>
+      </div>
+      {{/each}}
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</script>
+
+<script id="t-contact" type="text/x-handlebars-template">
+
+      <?php
+      $action=$_REQUEST['action'];
+      if ($action=="")    /* display the contact form */
+          {
+          ?>
+<<<<<<< Updated upstream
+          <div style=" margin: auto; float: right; padding: 0 10px; color: grey;" >
+=======
+          <div style=" color: grey; margin: auto; float: right; padding: 0 20px;" >
+>>>>>>> Stashed changes
+          <form  action="" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="action" value="submit">
+          Your name:<br>
+          <input name="name" type="text" value="" size="25"/><br>
+          Your email:<br>
+          <input name="email" type="text" value="" size="25"/><br>
+          Your message:<br>
+          <textarea name="message" rows="2" cols="24"></textarea><br>
+          <input type="submit" value="Send email"/>
+          </div>
+          </form>
+
+    </div>
+
+<<<<<<< Updated upstream
+  <img src="template/photo/map1.png" style="width: 400px; height: auto; background-size: contain; margin: auto; float: right;">
+=======
+    <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d127639.15287563774!2d103.68266668672894!3d1.3422610974570655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x31da106b38304391%3A0x28f94a448b004ef0!2sesign21+map!3m2!1d1.3422621!2d103.7527073!5e0!3m2!1sen!2ssg!4v1471405507546"
+     style="width: 400px; height: 300px; background-size: contain; margin: auto; float: right;" ></iframe>
+     <img src="MAP1.jpg" style="width: 400px; height: 150px; background-size: contain; margin: 0px 254px; float: right; ">
+>>>>>>> Stashed changes
+    <h1 style="color: white; text-shadow: 2px 2px 3px rgba(80, 80, 80, .3);">{{subject}}</h1>
+    {{#each areas}}
+    <p>
+      <br><h3 style="color: white; margin: 0; text-shadow: 2px 2px 3px rgba(80, 80, 80, .3);">{{title}}</h3>
+      <h4 style="color: white; margin: -13px 0; text-shadow: 2px 2px 3px rgba(80, 80, 80, .3);">
+        {{#each skills}}
+        <br>{{this}}
+
+        {{/each}}
+      </h4>
+    </p>
+    {{/each}}
+
+</script>
+
+<script>
+function displayAbout() {
+  var source = document.getElementById('t-about').innerHTML;
+  var template = Handlebars.compile(source);
+  var context = {
+    subject: 'Esign 21',
+    areas: [{ title: 'Our Vision', skills: [
+        'is to conceptualize our customers vision ',
+        'as our own.',
+        'Striving to be the brand of',
+        'trust and excellence.',
+        'You can believe in making ur brand',
+        'Stands out from the rest.',
+
+    ]},
+
+        { title: 'Outdoor Property Project', skills: [
+            'Outdoor & indoor sign, wall mural and graphic printing.',
+    ]},
+
+        { title: 'Indoor Retail / Window Display', skills: [
+            'Customized sign, neon, LED display and window display.',
+    ]},
+
+        { title: 'Printing Service', skills: [
+            'Indoor / outdoor sticker,4C / 6C- gloss , matte sticker printing,',
+            'PVC banner printing.',
+
+
+
+    ]}, ]
+  };
+
+  document.querySelector('.content').innerHTML = template(context);
+}
+</script>
+
+<script>
+function displayProject() {
+  var source = document.getElementById('t-project').innerHTML;
+  var template = Handlebars.compile(source);
+  var context = {
+    subject: 'Project',
+    images: [
+      'DSCN1868.JPG',
+      'DSCN1888.JPG',
+      'DSCN2589.JPG',
+      'DSCN2610.JPG',
+      'DSCN2620.JPG',
+      'DSCN2675.JPG',
+      'DSCN2792.JPG',
+      'DSCN2813.JPG',
+      'DSCN3144.JPG',
+      'DSCN3156.JPG',
+      'P9.jpg',
+      'P1000058.JPG',
+      'P1020103.JPG',
+      'P10002011.jpg',
+      'P10202591.jpg',
+      'P10101021.jpg',
+      'P1020280.JPG',
+      'P10101091.jpg',
+<<<<<<< Updated upstream
+      'sa1.jpg',
+=======
+>>>>>>> Stashed changes
+      'ds1.jpg',
+      'P1020196.JPG',
+      'p2.jpg',
+      'p5.jpg',
+      'p6.jpg',
+      'p7.jpg',
+      'P1010299.JPG',
+    ]
+  };
+
+  document.querySelector('.content').innerHTML = template(context);
+}
+
+function toggleLightbox(nar) {
+  $(nar).ekkoLightbox();
+}
+</script>
+
+<script>
+function displayDefault() {
+  var source = document.getElementById('t-default').innerHTML;
+  var template = Handlebars.compile(source);
+  var context = {
+    slides: [
+      { image: 'p5.jpg', name: 'Archylic Signage', active: 'active', caption: 'Archylic Signage', },
+      { image: 'DSCN1888.JPG', name: 'Signage Board', caption: 'Signage Board', },
+      { image: 'DSCN2792.JPG', name: 'Wall Mural', caption: 'Wall Mural', },
+<<<<<<< Updated upstream
+      { image: 'P1020103.JPG', name: 'Hoarding Board', caption: 'Hoarding Board', },
+=======
+      { image: 'p2.jpg', name: 'Hoarding Board', caption: 'Hoarding Board', },
+>>>>>>> Stashed changes
+      { image: 'P10202591.jpg', name: 'Display Lightbox', caption: 'Display Lightbox', },
+
+    ]
+  }
+
+  document.querySelector('.content').innerHTML = template(context);
+
+    $('.carousel').carousel({
+      interval: 2000
+    })
+}
+</script>
+
+
+<script>
+function displayContact() {
+  var source = document.getElementById('t-contact').innerHTML;
+  var template = Handlebars.compile(source);
+  var context = {
+    subject: 'Contact',
+    areas: [{ title: 'TELEPHONE', skills: [
+      '+65 6562 6521',
+    ]}, { title: 'FAX', skills: [
+        '+65 6562 0921',
+    ]}, { title: 'EMAIL', skills: [
+      'info@es21.com.sg',
+    ]},
+  ]
+  };
+  document.querySelector('.content').innerHTML = template(context);
+  }
+</script>
+
+<script>
+    <?php
+    }
+else                /* send the submitted data */
+    {
+    $name=$_REQUEST['name'];
+    $email=$_REQUEST['email'];
+    $message=$_REQUEST['message'];
+    if (($name=="")||($email=="")||($message==""))
+        {
+        echo "All fields are required, please fill <a href=\"\">the form</a> again.";
+        }
+    else{
+        $from="From: $name<$email>\r\nReturn-path: $email";
+        $subject="Message sent using your contact form";
+        mail("naryaong@gmail.com", $subject, $message, $from);
+        echo "Email sent!";
+        }
+    }
+?>
+</script>
+
+
+
+<script>
+displayDefault();
+</script>
+
+
+<style>
+body {
+  background-position: center;
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  width: 100%;
+  height: 320px;
+  background-position: center;
+  background-image: url('wall2.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 0;
+  display: inline-block;
+}
+.innerheader {
+  width: 60%;
+  height: 30px;
+  font-size: 17px;
+  margin: 295px auto;
+  padding: 0;
+  text-align: center;
+  font-family: calibri;
+}
+  .about {
+    margin-right: 110px;
+    color: white;
+    font-weight: bolder;
+    display: inline-block;
+  }
+  .about:hover {
+  font-weight: bolder;
+  color: #f3e4b2;
+  cursor: pointer;
+  display: inline-block;
+}
+.about ul {
+  padding: 0;
+  margin: 0;
+}
+
+  .project {
+    margin-right: 110px;
+    color: white;
+    font-weight: bolder;
+    display: inline-block;
+  }
+  .project:hover {
+   font-weight: bolder;
+   color: #f3e4b2;
+   cursor: pointer;
+   display: inline-block;
+  }
+  .project ul {
+   padding: 0;
+   margin: 0;
+  }
+  .project-img {
+  width: 200px;
+  height: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  background-size: contain;
+  float: left;
+  margin: 2px 2px;
+}
+
+  .contact {
+   color: white;
+   font-weight: bolder;
+   display: inline-block;
+  }
+  .contact:hover {
+   font-weight: bolder;
+   color: #f3e4b2;
+   cursor: pointer;
+   display: inline-block;
+  }
+  .contact ul {
+   padding: 0;
+   margin: 0;
+  }
+
+  .content {
+    height: 480px;
+    width: 850px;
+    padding: 0px 0px;
+    margin: 0px auto;
+    font-family: serif;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+  }
+
+.main {
+  width: 100%;
+  height: 480px;
+  /*background-color: linen;*/
+  margin: 0 auto;
+  padding: 0px 0px;
+}
+
+.footer {
+  width: 100%;
+  height: 98px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url('footer2.jpg');
+  margin: 0 auto;
+  padding: 0px 0px;
+}
+
+
+</style>
